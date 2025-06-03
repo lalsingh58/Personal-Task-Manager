@@ -1,11 +1,22 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'tasks/home.css' %} ">
     <title>Document</title>
 </head>
 <body>
-    "Hello world"
+    <H1>Hello Welcome To Task Manager</H1>
+    <h3>Here the list of your tasks</h3>
+
+    {% for task in tasklist %}
+    <div>
+        <h1>{{task.title}}</h1>
+        <p>{{task.Task_name}}</p>
+        <p>{{task.Task_created}} </p>
+    </div>
+    {% endfor %}
 </body>
 </html>

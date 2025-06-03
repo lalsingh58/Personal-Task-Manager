@@ -1,7 +1,10 @@
 from django.shortcuts import render
+from .models import Tasks
+
 # Create your views here.
-def home(request):
-    return render(request,'home.html')
+def displayTask(request):
+    tasklist = Tasks.objects.all()
+    return render(request,'home.html',{"tasklist": tasklist})
 
 def AddTask(request):
     return render(request,'AddTask.html')
