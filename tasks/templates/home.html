@@ -17,9 +17,10 @@
         <p>{{task.Task_name}}</p>
         <p>{{task.Task_created}} </p>
     </div>
-     <button class="AddTaskBtn"><a href="{% url "addtask" %} ">Add Task</a></button>
+    
     <button class="AddTaskBtn"><a href="{% url "deletetask" task.id %} ">Delete Task</a></button>
     {% endfor %}
+    <button class="AddTaskBtn"><a href="{% url "addtask" %} ">Add Task</a></button>
 
    
 </body>

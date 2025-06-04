@@ -25,7 +25,5 @@ def DeleteTask(request,task_id):
     return redirect('home')
     
 
-
-
 def EditTask(request,task_id):
     return render(request,'EditTask.html',id=task_id)
