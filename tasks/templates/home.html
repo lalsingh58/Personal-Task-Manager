@@ -12,11 +12,13 @@
     <h3>Here the list of your tasks</h3>
 
     {% for task in tasklist %}
-    <div>
+    <div class="task_container">
         <h1>{{task.title}}</h1>
         <p>{{task.Task_name}}</p>
         <p>{{task.Task_created}} </p>
     </div>
     {% endfor %}
+
+    <a href="{% url "addtask" %} ">Add Task</a>
 </body>
 </html>
