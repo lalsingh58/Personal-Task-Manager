@@ -8,19 +8,43 @@
     <title>Document</title>
 </head>
 <body>
-    <H1>Hello Welcome To Task Manager</H1>
+
+    {% if request.user.is_authenticated %}
+
+    <H1>Hello {{request.user}} Welcome To Task Manager</H1>
     <h3>Here the list of your tasks</h3>
 
-    {% for task in tasklist %}
+     {% for task in tasklist %}
     <div class="task_container">
         <h1>{{task.title}}</h1>
         <p>{{task.Task_name}}</p>
         <p>{{task.Task_created}} </p>
     </div>
-    
-    <button class="AddTaskBtn"><a href="{% url "deletetask" task.id %} ">Delete Task</a></button>
-    {% endfor %}
     <button class="AddTaskBtn"><a href="{% url "addtask" %} ">Add Task</a></button>
+    <button class="DeleteTaskBtn"><a href="{% url "deletetask" task.id %} ">Delete Task</a></button>
+    <form action="{% url  "logout"%}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Log out</button>
+    </form>
+    {% endfor %}
+    
+    {% else %}
+       <H1>Hello Welcome To Task Manager</H1>
+       {% comment %} <button class="AddTaskBtn"><a href="{% url "addtask" %} ">Add Task</a></button> {% endcomment %}
+        <form action="{% url  "login"%}" method="POST">
+            {% csrf_token %}
+            <button type="submit">Log in</button>
+        </form>
+
+    {% endif %}
+
+    
+
+
+
+   
+
+    
 
    
 </body>
